@@ -40,5 +40,30 @@ namespace CartolinApp.Services
             }
             return null;
         }
+
+        public async Task<List<Jogadores>> GetDadosJogador()
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            try
+            {
+                var response = await httpClient.GetAsync($"{BaseUrl}atletas/mercado").ConfigureAwait(false);
+                if (response.IsSuccessStatusCode)
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        return JsonConvert.DeserializeObject<List<Jogadores>>(
+                            await new StreamReader(responseStream)
+                                .ReadToEndAsync().ConfigureAwait(false));
+                    }
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                e.Message.ToString();
+                return null;
+            }
+            return null;
+        }
     }
 }
