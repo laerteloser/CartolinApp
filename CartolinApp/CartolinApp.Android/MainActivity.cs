@@ -17,9 +17,13 @@ namespace CartolinApp.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, certificate, chain, errors) => true;
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
             LoadApplication(new App());
         }
     }

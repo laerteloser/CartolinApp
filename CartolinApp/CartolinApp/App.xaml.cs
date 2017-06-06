@@ -13,7 +13,7 @@ namespace CartolinApp
         {
             InitializeComponent();
 
-            MainPage = new CartolinApp.MainPage();
+            MainPage = new CartolinApp.LoginPage();
         }
 
         protected override void OnStart()

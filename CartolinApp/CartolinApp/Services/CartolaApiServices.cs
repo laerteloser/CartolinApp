@@ -1,5 +1,4 @@
-﻿using Android.App;
-using CartolinApp.Models;
+﻿using CartolinApp.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +8,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(CartolinApp.Services.CartolaApiServices))]
-[assembly: UsesPermission(Android.Manifest.Permission.Internet)]
 namespace CartolinApp.Services
 {
     public class CartolaApiServices : ICartolaApiService
